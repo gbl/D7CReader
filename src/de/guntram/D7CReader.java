@@ -5,6 +5,9 @@
  */
 package de.guntram;
 
+import java.io.File;
+import java.io.IOException;
+
 /**
  *
  * @author gbl
@@ -14,8 +17,9 @@ public class D7CReader {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws IOException {
+        D7CBlob blob=new D7CBlob(new File("/home/gbl/Temp/SilverKnit/gaucho.stp"));
+        blob.test();
     }
     
 }
