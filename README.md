@@ -14,7 +14,8 @@ The program will read three kinds of data from the .stp file:
 * colors
 * stitch types
 
-and dump them to standard output. 
+and dump them to standard output, as well as writing a .png image file to be
+able to see the pattern.
 
 In the first part, each ascii character is a placeholder for a stitch in one certain color. This ascii map gives you a rough
 idea of the pattern.
@@ -30,3 +31,7 @@ If you have no idea of how to compile and use Java:
 - install a java SDK (Software Development Kit), the JRE (Java Runtime Environment) is not enough as it doesn't include a compiler.
 - Once installed, run `javac src/de/guntram/D7C*java` to compile the .java files to class files.
 - Run `java -cp src de.guntram.D7CReader <filename.stp>`
+- This will produce a <filename.png> image file which you can check out using
+any image viewer.
+- Repeat with other filenames to convert more files (you only need to compile once).
+
