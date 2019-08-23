@@ -5,8 +5,10 @@
  */
 package de.guntram;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -45,6 +47,27 @@ public class D7CReader {
             for (int j=0; j<blob.getWidth(); j++) 
                 System.out.print((char)pixels[pos++]);
             System.out.println();
+        }
+        
+        BufferedImage canvas = new BufferedImage(blob.getWidth(), blob.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
+        pixels=blob.getDataBlock1Pixels();
+        for (int i=0; i<blob.getWidth(); i++) {
+            for (int j=0; j<blob.getHeight(); j++) {
+                int pixelPos = (blob.getHeight() - j - 1)*blob.getWidth() + i;
+                int pixel = pixels[pixelPos];
+                D7CColor color = blob.getColor(pixel);
+                canvas.setRGB(i, j, color.getR()<<16 | color.getG()<<8 | color.getB());
+            }
+        }
+        File outputFile=new File(filename.substring(0, filename.length()-4)+".png");
+        if (!outputFile.exists()) {
+            try {
+                ImageIO.write(canvas, "png", outputFile);
+            } catch (IOException ex) {
+                System.err.println(ex);
+            }
+        } else {
+            System.err.println("will not overwrite existing file "+outputFile.getName());
         }
     }
 }
