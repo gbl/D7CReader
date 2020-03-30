@@ -101,7 +101,7 @@ public class D7CBlob {
         if (!haveFirstDecryptionNumber) {
             int temp;
             firstDecryptionNumber=getDwordAt(0x35)/2; debug(firstDecryptionNumber);
-            temp=getByteAt(0x3f)*4;                   debug(temp); firstDecryptionNumber+=temp; debug(firstDecryptionNumber);
+            temp=getWordAt(0x3f)*4;                   debug(temp); firstDecryptionNumber+=temp; debug(firstDecryptionNumber);
             temp=getDwordAt(0x39);                    debug(temp); firstDecryptionNumber+=temp; debug(firstDecryptionNumber);
             temp=getWordAt(0x3d);                     debug(temp); firstDecryptionNumber+=temp; debug(firstDecryptionNumber);
             temp=getByteAt(0x20);                     debug(temp); firstDecryptionNumber+=temp; debug(firstDecryptionNumber);
